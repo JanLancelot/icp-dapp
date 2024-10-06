@@ -3,7 +3,6 @@ import Home from "./pages/Home";
 import Discover from "./pages/Discover";
 import VolunteerForm from "./pages/VolunteerForm";
 import Authentication from "./pages/Authentication";
-import { HelpCenterComponent } from "./components/help-center";
 import Help from "./pages/Help";
 
 function App() {
