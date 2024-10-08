@@ -173,7 +173,7 @@ export function VolunteerApplicationFormComponent({
           </p>
         </CardContent>
       </Card>
-      \{" "}
+      {" "}
       <Card>
         <CardContent className="p-6">
           <form className="space-y-6">

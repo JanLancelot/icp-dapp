@@ -11,6 +11,8 @@ export function NavbarComponent() {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Discover Opportunities", href: "/opportunities" },
+    { name: "My Profile", href: "/profile" },
+    { name: "Recruit Volunteers", href: "/organizations"},
     { name: "Help Center", href: "/help-center" },
   ];
 

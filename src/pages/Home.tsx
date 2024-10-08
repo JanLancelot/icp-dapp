@@ -4,6 +4,7 @@ import { NavbarComponent } from "@/components/navbar";
 import { VolunteerOpportunitiesComponent } from "@/components/volunteer-opportunities";
 import { LatestOpportunitiesComponent } from "@/components/latest-opportunities";
 import { FooterComponent } from "@/components/footer";
+import PartnerLogosComponent from "@/components/partner-logos";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <VolunteerOpportunitiesComponent />
         <LatestOpportunitiesComponent />
       </Container>
+      <PartnerLogosComponent />
       <FooterComponent />
     </div>
   );
