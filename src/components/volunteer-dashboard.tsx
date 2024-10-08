@@ -317,9 +317,6 @@ interface EditProfileDialogProps {
 
 function EditProfileDialog({ user, onUpdate }: EditProfileDialogProps) {
   const [editedUser, setEditedUser] = useState<User>(user);
-  const [profilePicture, setProfilePicture] = useState<string>(
-    user.profilePicture
-  );
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -343,7 +340,6 @@ function EditProfileDialog({ user, onUpdate }: EditProfileDialogProps) {
       const reader = new FileReader();
       reader.onload = () => {
         const base64Image = reader.result as string;
-        setProfilePicture(base64Image);
         setEditedUser((prev) => ({ ...prev, profilePicture: base64Image }));
       };
       reader.readAsDataURL(file);

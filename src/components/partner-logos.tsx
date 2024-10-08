@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function PartnerLogosComponent() {
   const imageLinks = [
     "https://banner2.cleanpng.com/20180504/wyw/avdkmqc2o.webp",

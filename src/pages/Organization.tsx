@@ -1,7 +1,6 @@
 import { FooterComponent } from '@/components/footer'
 import { NavbarComponent } from '@/components/navbar'
 import { VolunteerMatchPage } from '@/components/volunteer-match-page'
-import React from 'react'
 
 export default function Organization() {
   return (
