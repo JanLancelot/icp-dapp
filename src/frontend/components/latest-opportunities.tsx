@@ -1,7 +1,7 @@
 "use client";
 
 import { MapPin, Briefcase, Calendar, Users } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/frontend/components/ui/button";
 
 interface ProgressBarProps {
   current: number;

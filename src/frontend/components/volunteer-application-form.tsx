@@ -1,19 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from "@/frontend/components/ui/button";
+import { Input } from "@/frontend/components/ui/input";
+import { Label } from "@/frontend/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Card, CardContent } from "@/components/ui/card";
-import { Textarea } from "@/components/ui/textarea";
+} from "@/frontend/components/ui/select";
+import { Checkbox } from "@/frontend/components/ui/checkbox";
+import { Card, CardContent } from "@/frontend/components/ui/card";
+import { Textarea } from "@/frontend/components/ui/textarea";
 
 interface VolunteerApplicationFormProps {
   eventTitle: string;

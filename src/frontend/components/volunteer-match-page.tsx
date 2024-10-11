@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/frontend/components/ui/button";
+import { Card, CardContent } from "@/frontend/components/ui/card";
 import { Home, Building2, GraduationCap, Globe } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 

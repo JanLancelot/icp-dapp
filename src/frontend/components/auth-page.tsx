@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from "@/frontend/components/ui/button";
+import { Input } from "@/frontend/components/ui/input";
+import { Label } from "@/frontend/components/ui/label";
 import {
   Card,
   CardContent,
@@ -11,8 +11,8 @@ import {
   CardHeader,
   CardTitle,
   CardFooter,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+} from "@/frontend/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/frontend/components/ui/tabs";
 import dyci from "../images/DYCI.png";
 
 const images: string[] = [

@@ -6,26 +6,26 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from "@/frontend/components/ui/table";
 import { ChevronDown, Info, Search, MapPin, Edit2, Award } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Input } from "@/frontend/components/ui/input";
+import { Badge } from "@/frontend/components/ui/badge";
+import { Card, CardContent } from "@/frontend/components/ui/card";
+import { Button } from "@/frontend/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
+} from "@/frontend/components/ui/dialog";
+import { Label } from "@/frontend/components/ui/label";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
+} from "@/frontend/components/ui/tooltip";
 
 interface User {
   name: string;

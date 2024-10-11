@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Input } from "@/frontend/components/ui/input"
+import { Button } from "@/frontend/components/ui/button"
+import { Card, CardContent } from "@/frontend/components/ui/card"
 
 const articles = [
   { id: 1, title: "How do I view my volunteer hours?", category: "Creating and Updating My Account", date: "Dec 6, 2023", views: 1673 },

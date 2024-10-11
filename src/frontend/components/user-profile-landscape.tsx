@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/frontend/components/ui/button";
+import { Card, CardContent } from "@/frontend/components/ui/card";
+import { Avatar, AvatarFallback, AvatarImage } from "@/frontend/components/ui/avatar";
 import { MapPin, Edit2 } from 'lucide-react';
 
 export default function UserProfileLandscape() {

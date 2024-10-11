@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/frontend/components/ui/button";
+import { Input } from "@/frontend/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+} from "@/frontend/components/ui/select";
+import { Card, CardContent, CardFooter } from "@/frontend/components/ui/card";
+import { Separator } from "@/frontend/components/ui/separator";
 import {
   MapPin,
   Briefcase,
@@ -28,7 +28,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
+} from "@/frontend/components/ui/dialog";
 
 interface ContactInfo {
   name: string;
