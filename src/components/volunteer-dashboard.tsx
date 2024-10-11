@@ -7,7 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ChevronDown, Info, Search, MapPin, Edit2 } from "lucide-react";
+import { ChevronDown, Info, Search, MapPin, Edit2, Award } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,6 +20,12 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface User {
   name: string;
@@ -37,6 +43,45 @@ interface Opportunity {
   totalHours: number;
   outstandingHours: number;
 }
+
+interface Achievement {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  type: "badge" | "medal";
+}
+
+const mockAchievements: Achievement[] = [
+  {
+    id: "1",
+    name: "Eco Warrior",
+    description: "Participated in 5 environmental cleanup events",
+    icon: "🌿",
+    type: "badge",
+  },
+  {
+    id: "2",
+    name: "Animal Ally",
+    description: "Volunteered 50 hours at animal shelters",
+    icon: "🐾",
+    type: "badge",
+  },
+  {
+    id: "3",
+    name: "Education Champion",
+    description: "Tutored students for over 100 hours",
+    icon: "📚",
+    type: "medal",
+  },
+  {
+    id: "4",
+    name: "Community Pillar",
+    description: "Accumulated 500 total volunteer hours",
+    icon: "🏆",
+    type: "medal",
+  },
+];
 
 const mockUser: User = {
   name: "Jane Doe",
@@ -105,27 +150,46 @@ const mockCancelledOpportunities: Opportunity[] = [
 export default function VolunteerDashboard() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [user, setUser] = useState<User>(mockUser);
+  const [selectedAchievement, setSelectedAchievement] =
+    useState<Achievement | null>(null);
 
   const filterOpportunities = (opportunities: Opportunity[]) =>
     opportunities.filter((opp) =>
       opp.link.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+  const handleAchievementClick = (achievement: Achievement) => {
+    setSelectedAchievement(achievement);
+  };
   const handleUserUpdate = (updatedUser: User) => {
     setUser(updatedUser);
   };
 
-  const renderOpportunityTable = (opportunities: Opportunity[], showHours: boolean) => (
+  const renderOpportunityTable = (
+    opportunities: Opportunity[],
+    showHours: boolean
+  ) => (
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead>Application Number <ChevronDown className="inline-block ml-1" /></TableHead>
-          <TableHead>Volunteer Opportunity Link <ChevronDown className="inline-block ml-1" /></TableHead>
-          <TableHead>Status <ChevronDown className="inline-block ml-1" /></TableHead>
+          <TableHead>
+            Application Number <ChevronDown className="inline-block ml-1" />
+          </TableHead>
+          <TableHead>
+            Volunteer Opportunity Link{" "}
+            <ChevronDown className="inline-block ml-1" />
+          </TableHead>
+          <TableHead>
+            Status <ChevronDown className="inline-block ml-1" />
+          </TableHead>
           {showHours && (
             <>
-              <TableHead>Total Hours <ChevronDown className="inline-block ml-1" /></TableHead>
-              <TableHead>Outstanding Hours <ChevronDown className="inline-block ml-1" /></TableHead>
+              <TableHead>
+                Total Hours <ChevronDown className="inline-block ml-1" />
+              </TableHead>
+              <TableHead>
+                Outstanding Hours <ChevronDown className="inline-block ml-1" />
+              </TableHead>
             </>
           )}
         </TableRow>
@@ -246,19 +310,74 @@ export default function VolunteerDashboard() {
             </div>
           </CardContent>
         </Card>
+        <section className="mb-12">
+          <h2 className="text-4xl font-bold mb-4">My Achievements</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {mockAchievements.map((achievement) => (
+              <TooltipProvider key={achievement.id}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="outline"
+                      className={`w-full h-24 flex flex-col items-center justify-center ${
+                        selectedAchievement?.id === achievement.id
+                          ? "border-blue-500 bg-blue-50"
+                          : ""
+                      }`}
+                      onClick={() => handleAchievementClick(achievement)}
+                    >
+                      <span className="text-3xl mb-2">{achievement.icon}</span>
+                      <span className="text-sm font-semibold">
+                        {achievement.name}
+                      </span>
+                      <Badge
+                        variant={
+                          achievement.type === "badge"
+                            ? "secondary"
+                            : "destructive"
+                        }
+                        className="mt-1"
+                      >
+                        {achievement.type}
+                      </Badge>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{achievement.description}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            ))}
+          </div>
+        </section>
+
+        {selectedAchievement && (
+          <Card className="mb-8">
+            <CardContent className="p-6">
+              <div className="flex items-center mb-4">
+                <Award className="w-8 h-8 mr-4 text-yellow-500" />
+                <h3 className="text-2xl font-bold">
+                  {selectedAchievement.name}
+                </h3>
+              </div>
+              <p className="text-gray-600">{selectedAchievement.description}</p>
+            </CardContent>
+          </Card>
+        )}
 
         <section className="mb-12">
           <h2 className="text-4xl font-bold mb-4">My Volunteer Journey</h2>
           <p className="mb-4">
-            Track your volunteer applications and opportunities here. Ready to make a difference? 
-            Browse the latest opportunities in{" "}
+            Track your volunteer applications and opportunities here. Ready to
+            make a difference? Browse the latest opportunities in{" "}
             <a href="#" className="text-blue-600 hover:underline">
               Discover Opportunities
             </a>{" "}
             and find something that sparks your passion.
           </p>
           <p>
-            Contact the Volunteer Coordinator for more information about your applications or active opportunities.
+            Contact the Volunteer Coordinator for more information about your
+            applications or active opportunities.
           </p>
         </section>
 
@@ -278,17 +397,26 @@ export default function VolunteerDashboard() {
 
         <section className="mb-12">
           <h3 className="text-2xl font-bold mb-4">ACTIVE OPPORTUNITIES</h3>
-          {renderOpportunityTable(filterOpportunities(mockActiveOpportunities), true)}
+          {renderOpportunityTable(
+            filterOpportunities(mockActiveOpportunities),
+            true
+          )}
         </section>
 
         <section className="mb-12">
           <h3 className="text-2xl font-bold mb-4">COMPLETED OPPORTUNITIES</h3>
-          {renderOpportunityTable(filterOpportunities(mockCompletedOpportunities), true)}
+          {renderOpportunityTable(
+            filterOpportunities(mockCompletedOpportunities),
+            true
+          )}
         </section>
 
         <section className="mb-12">
           <h3 className="text-2xl font-bold mb-4">CANCELLED OPPORTUNITIES</h3>
-          {renderOpportunityTable(filterOpportunities(mockCancelledOpportunities), false)}
+          {renderOpportunityTable(
+            filterOpportunities(mockCancelledOpportunities),
+            false
+          )}
         </section>
 
         <section className="flex justify-between items-center">
